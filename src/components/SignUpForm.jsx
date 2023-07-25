@@ -9,9 +9,13 @@ export default function SignUpForm() {
       <h2>Sign Up</h2>
       <form>
         <label>Username: </label>
-        <input type="username" />
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
         <label> Password: </label>
-        <input type="password" />
+        <input type="password" value={password} />
         <button>Submit</button>
       </form>
     </>
