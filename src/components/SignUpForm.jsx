@@ -4,10 +4,16 @@ export default function SignUpForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    console.log("hello");
+  }
+
   return (
     <>
       <h2>Sign Up</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>Username: </label>
         <input
           type="text"
