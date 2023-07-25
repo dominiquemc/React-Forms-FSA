@@ -36,13 +36,22 @@ export default function SignUpForm({ token, setToken }) {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
+
         <label> Password: </label>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button>Submit</button>
+        <button
+          onClick={() => {
+            if (username.length >= 15) {
+              alert("Username should not exceed 15 characters");
+            }
+          }}
+        >
+          Submit
+        </button>
       </form>
     </>
   );
