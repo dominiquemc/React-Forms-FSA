@@ -1,7 +1,16 @@
 import { useState } from "react";
 
-export default function Authenticate({ token, setToken }) {
-  const [error, setError] = useState(null);
+export default function Authenticate({
+  token,
+  setToken,
+  error,
+  setError,
+  username,
+  password,
+  setUsername,
+  setPassword,
+}) {
+  // const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
 
   async function handleClick() {
@@ -17,18 +26,21 @@ export default function Authenticate({ token, setToken }) {
         }
       );
       const result = await response.json();
+      console.log(result);
       setSuccessMessage(result.message);
     } catch (error) {
       setError(error.message);
     }
+    setUsername("");
+    setPassword("");
   }
 
   return (
-    <>
+    <section className="auth-section">
       <h2>Authenticate</h2>
       {successMessage && <p>{successMessage}</p>}
       {error && <p>{error}</p>}
       <button onClick={handleClick}>Authenticate Token</button>
-    </>
+    </section>
   );
 }
