@@ -10,7 +10,6 @@ export default function Authenticate({
   setUsername,
   setPassword,
 }) {
-  // const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
 
   async function handleClick() {
