@@ -25,7 +25,6 @@ export default function Authenticate({
         }
       );
       const result = await response.json();
-      console.log(result);
       setSuccessMessage(result.message);
     } catch (error) {
       setError(error.message);
