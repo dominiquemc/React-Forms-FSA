@@ -10,10 +10,6 @@ export default function SignUpForm({
   setUsername,
   setPassword,
 }) {
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [error, setError] = useState(null);
-
   async function handleSubmit(e) {
     e.preventDefault();
     try {
