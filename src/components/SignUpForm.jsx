@@ -1,9 +1,18 @@
 import { useState } from "react";
 
-export default function SignUpForm({ token, setToken }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
+export default function SignUpForm({
+  token,
+  setToken,
+  error,
+  setError,
+  username,
+  password,
+  setUsername,
+  setPassword,
+}) {
+  // const [username, setUsername] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [error, setError] = useState(null);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -19,6 +28,7 @@ export default function SignUpForm({ token, setToken }) {
         }
       );
       const result = await response.json();
+      console.log(result);
       setToken(result.token);
     } catch (error) {
       setError(error.message);
@@ -26,33 +36,35 @@ export default function SignUpForm({ token, setToken }) {
   }
 
   return (
-    <>
-      <h2>Sign Up</h2>
-      {error && <p>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>Username: </label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+    <main className="main-sign-up">
+      <h1>Sign Up</h1>
+      <div className="sign-up">
+        {error && <p>{error}</p>}
+        <form onSubmit={handleSubmit}>
+          <label>Username: </label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
 
-        <label> Password: </label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button
-          onClick={() => {
-            if (username.length >= 15) {
-              alert("Username should not exceed 15 characters");
-            }
-          }}
-        >
-          Submit
-        </button>
-      </form>
-    </>
+          <label> Password: </label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button
+            onClick={() => {
+              if (username.length >= 15) {
+                alert("Username should not exceed 15 characters");
+              }
+            }}
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </main>
   );
 }
